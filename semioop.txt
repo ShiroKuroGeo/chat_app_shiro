@@ -1,0 +1,551 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class CalculatorApplication implements ActionListener{
+
+    double num1 = 0, num2 = 0, result = 0;
+    int calculation;
+    double memory = 0;
+	 JLabel memoryLabel = new JLabel();
+     JFrame frame = new JFrame("Calculator");
+     JLabel label = new JLabel();
+     JTextField textField = new JTextField();
+     JButton buttonZero = new JButton("0");
+     JButton buttonOne = new JButton("1");
+     JButton buttonTwo = new JButton("2");
+     JButton buttonThree = new JButton("3");
+     JButton buttonFour = new JButton("4");
+     JButton buttonFive = new JButton("5");
+     JButton buttonSix = new JButton("6");
+     JButton buttonSeven = new JButton("7");
+     JButton buttonEight = new JButton("8");
+     JButton buttonNine = new JButton("9");
+     JButton buttonDot = new JButton(".");
+     JButton buttonClear = new JButton("C");
+     JButton buttonDelete = new JButton("DEL");
+     JButton buttonEqual = new JButton("=");
+     JButton buttonMul = new JButton("X");
+     JButton buttonDiv = new JButton("/");
+     JButton buttonPlus = new JButton("+");
+     JButton buttonMinus = new JButton("-");
+     JButton buttonSquare = new JButton("x\u00B2");
+     JButton buttonReciprocal = new JButton("1/x");
+     JButton buttonSqrt = new JButton("\u221A");
+     JButton buttonPercent = new JButton("%");
+     JButton buttonClearEntity = new JButton("CE");
+     JButton buttonNegation = new JButton("+/-");
+     JButton buttonMemoryClear = new JButton("MC");
+     JButton buttonMemoryRecall = new JButton("MR");
+     JButton buttonMemoryAdd = new JButton("M+");
+     JButton buttonMemorySubtract = new JButton("M-");
+     JButton buttonMemoryStore = new JButton("MS");
+     JTextField textMemory = new JTextField();
+
+    CalculatorApplication(){
+       prepareGui();
+       addComponents();
+       addActionEvent();
+    }
+    public void addComponents(){
+
+        label.setBounds(10,0,50,50);
+        label.setForeground(Color.white);
+        frame.getContentPane().add(label);
+
+        textField.setBounds(10,44,270,50);
+        textField.setFont(new Font("Arial",Font.BOLD,20));
+        textField.setEditable(false);
+        textField.setHorizontalAlignment(SwingConstants.RIGHT);
+        frame.getContentPane().add(textField);
+
+
+        buttonSeven.setForeground(Color.WHITE);
+        buttonSeven.setBackground(Color.DARK_GRAY);
+        buttonSeven.setBorder(null);
+        buttonSeven.setBounds(10,258,60,40);
+        buttonSeven.setFont(new Font("Arial",Font.BOLD,20));
+        buttonSeven.setFocusable(false);
+        frame.getContentPane().add(buttonSeven);
+
+        buttonEight.setForeground(Color.WHITE);
+        buttonEight.setBackground(Color.DARK_GRAY);
+        buttonEight.setBounds(80,258,60,40);
+        buttonEight.setBorder(null);
+        buttonEight.setFont(new Font("Arial",Font.BOLD,20));
+        buttonEight.setFocusable(false);
+        frame.getContentPane().add(buttonEight);
+
+        buttonNine.setForeground(Color.WHITE);
+        buttonNine.setBackground(Color.DARK_GRAY);
+        buttonNine.setBounds(150,258,60,40);
+        buttonNine.setBorder(null);
+        buttonNine.setFont(new Font("Arial",Font.BOLD,20));
+        buttonNine.setFocusable(false);
+        frame.getContentPane().add(buttonNine);
+
+        buttonFour.setForeground(Color.WHITE);
+        buttonFour.setBackground(Color.DARK_GRAY);
+        buttonFour.setBounds(10,309,60,40);
+        buttonFour.setBorder(null);
+        buttonFour.setFont(new Font("Arial",Font.BOLD,20));
+        buttonFour.setFocusable(false);
+        frame.getContentPane().add(buttonFour);
+
+        buttonFive.setForeground(Color.WHITE);
+        buttonFive.setBackground(Color.DARK_GRAY);
+        buttonFive.setBounds(80,309,60,40);
+        buttonFive.setBorder(null);
+        buttonFive.setFont(new Font("Arial",Font.BOLD,20));
+        buttonFive.setFocusable(false);
+        frame.getContentPane().add(buttonFive);
+
+        buttonSix.setForeground(Color.WHITE);
+        buttonSix.setBackground(Color.DARK_GRAY);
+        buttonSix.setBounds(150,309,60,40);
+        buttonSix.setBorder(null);
+        buttonSix.setFont(new Font("Arial",Font.BOLD,20));
+        buttonSix.setFocusable(false);
+        frame.getContentPane().add(buttonSix);
+
+        buttonOne.setForeground(Color.WHITE);
+        buttonOne.setBackground(Color.DARK_GRAY);
+        buttonOne.setBounds(10,360,60,40);
+        buttonOne.setBorder(null);
+        buttonOne.setFont(new Font("Arial",Font.BOLD,20));
+        buttonOne.setFocusable(false);
+        frame.getContentPane().add(buttonOne);
+
+        buttonTwo.setForeground(Color.WHITE);
+        buttonTwo.setBackground(Color.DARK_GRAY);
+        buttonTwo.setBounds(80,360,60,40);
+        buttonTwo.setBorder(null);
+        buttonTwo.setFont(new Font("Arial",Font.BOLD,20));
+        buttonTwo.setFocusable(false);
+        frame.getContentPane().add(buttonTwo);
+
+        buttonThree.setForeground(Color.WHITE);
+        buttonThree.setBackground(Color.DARK_GRAY);
+        buttonThree.setBounds(150,360,60,40);
+        buttonThree.setBorder(null);
+        buttonThree.setFont(new Font("Arial",Font.BOLD,20));
+        buttonThree.setFocusable(false);
+        frame.getContentPane().add(buttonThree);
+
+        buttonDot.setBackground(Color.black);
+        buttonDot.setForeground(Color.white);
+        buttonDot.setBounds(150,411,60,40);
+        buttonDot.setBorder(null);
+        buttonDot.setFont(new Font("Arial",Font.BOLD,20));
+        buttonDot.setFocusable(false);
+        frame.getContentPane().add(buttonDot);
+
+        buttonZero.setForeground(Color.WHITE);
+        buttonZero.setBackground(Color.DARK_GRAY);
+        buttonZero.setBounds(80,411,60,40);
+        buttonZero.setBorder(null);
+        buttonZero.setFont(new Font("Arial",Font.BOLD,20));
+        buttonZero.setFocusable(false);
+        frame.getContentPane().add(buttonZero);
+
+        buttonEqual.setBounds(220,411,60,40);
+        buttonEqual.setBorder(null);
+        buttonEqual.setFont(new Font("Arial",Font.BOLD,20));
+        buttonEqual.setBackground(Color.black);
+        buttonEqual.setForeground(Color.white);
+        buttonEqual.setFocusable(false);
+        frame.getContentPane().add(buttonEqual);
+
+        buttonDiv.setBounds(220,207,60,40);
+        buttonDiv.setBorder(null);
+        buttonDiv.setFont(new Font("Arial",Font.BOLD,20));
+        buttonDiv.setBackground(Color.black);
+        buttonDiv.setForeground(Color.white);
+        buttonDiv.setFocusable(false);
+        frame.getContentPane().add(buttonDiv);
+
+        buttonSqrt.setBackground(Color.black);
+        buttonSqrt.setForeground(Color.white);
+        buttonSqrt.setBounds(150,207,60,40);
+        buttonSqrt.setFont(new Font("Arial",Font.BOLD,18));
+        buttonSqrt.setFocusable(false);
+        buttonSqrt.setBorder(null);
+        frame.getContentPane().add(buttonSqrt);
+
+        buttonMul.setBounds(220,258,60,40);
+        buttonMul.setBorder(null);
+        buttonMul.setFont(new Font("Arial",Font.BOLD,18));
+        buttonMul.setBackground(Color.black);
+        buttonMul.setForeground(Color.white);
+        buttonMul.setFocusable(false);
+        frame.getContentPane().add(buttonMul);
+
+        buttonMinus.setBounds(220,309,60,40);
+        buttonMinus.setBorder(null);
+        buttonMinus.setFont(new Font("Arial",Font.BOLD,20));
+        buttonMinus.setBackground(Color.black);
+        buttonMinus.setForeground(Color.white);
+        buttonMinus.setFocusable(false);
+        frame.getContentPane().add(buttonMinus);
+
+        buttonPlus.setBounds(220,360,60,40);
+        buttonPlus.setBorder(null);
+        buttonPlus.setFont(new Font("Arial",Font.BOLD,20));
+        buttonPlus.setBackground(Color.black);
+        buttonPlus.setForeground(Color.white);
+        buttonPlus.setFocusable(false);
+        frame.getContentPane().add(buttonPlus);
+
+        buttonSquare.setBackground(Color.black);
+        buttonSquare.setForeground(Color.white);
+        buttonSquare.setBounds(80,207,60,40);
+        buttonSquare.setBorder(null);
+        buttonSquare.setFont(new Font("Arial",Font.BOLD,20));
+        buttonSquare.setFocusable(false);
+        frame.getContentPane().add(buttonSquare);
+
+        buttonReciprocal.setBackground(Color.black);
+        buttonReciprocal.setForeground(Color.white);
+        buttonReciprocal.setBounds(10,207,60,40);
+        buttonReciprocal.setBorder(null);
+        buttonReciprocal.setFont(new Font("Arial",Font.BOLD,15));
+        buttonReciprocal.setFocusable(false);
+        frame.getContentPane().add(buttonReciprocal);
+
+        buttonDelete.setBounds(220,156,60,40);
+        buttonDelete.setBorder(null);
+        buttonDelete.setFont(new Font("Arial",Font.BOLD,13));
+        buttonDelete.setBackground(Color.black);
+        buttonDelete.setForeground(Color.white);
+        buttonDelete.setFocusable(false);
+        frame.getContentPane().add(buttonDelete);
+
+        buttonClear.setBounds(150,156,60,40);
+        buttonClear.setBorder(null);
+        buttonClear.setFont(new Font("Arial",Font.BOLD,20));
+        buttonClear.setBackground(Color.black);
+        buttonClear.setForeground(Color.white);
+        buttonClear.setFocusable(false);
+        frame.getContentPane().add(buttonClear);
+
+		buttonPercent.setForeground(Color.white);
+        buttonPercent.setBackground(Color.black);
+        buttonPercent.setBorder(null);
+        buttonPercent.setFont(new Font("Arial", Font.BOLD, 18));
+        buttonPercent.setFocusable(false);
+        buttonPercent.setBounds(10, 156, 60, 40);
+        frame.getContentPane().add(buttonPercent);
+
+        buttonClearEntity.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+
+        buttonClearEntity.setBorder(null);
+        buttonClearEntity.setForeground(Color.WHITE);
+        buttonClearEntity.setFont(new Font("Arial", Font.BOLD, 18));
+        buttonClearEntity.setFocusable(false);
+        buttonClearEntity.setBackground(Color.black);
+        buttonClearEntity.setBounds(80, 156, 60, 40);
+        frame.getContentPane().add(buttonClearEntity);
+
+        buttonNegation.setBorder(null);
+        buttonNegation.setBackground(Color.black);
+        buttonNegation.setForeground(Color.white);
+        buttonNegation.setFont(new Font("Arial", Font.BOLD, 20));
+        buttonNegation.setFocusable(false);
+        buttonNegation.setBounds(10, 411, 60, 40);
+        frame.getContentPane().add(buttonNegation);
+
+        buttonMemoryClear.setBorder(null);
+        buttonMemoryClear.setForeground(Color.gray);
+        buttonMemoryClear.setBackground(Color.black);
+        buttonMemoryClear.setFont(new Font("Arial", Font.BOLD, 10));
+        buttonMemoryClear.setFocusable(false);
+        buttonMemoryClear.setBounds(10, 105, 40, 40);
+        frame.getContentPane().add(buttonMemoryClear);
+
+        buttonOne.setBorder(null);
+        buttonMemoryRecall.setBackground(null);
+        buttonMemoryRecall.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+
+        buttonMemoryRecall.setFont(new Font("Arial", Font.BOLD, 10));
+        buttonMemoryRecall.setForeground(Color.gray);
+        buttonMemoryRecall.setBorder(null);
+        buttonMemoryRecall.setFocusable(false);
+        buttonMemoryRecall.setBounds(70, 105, 40, 40);
+        frame.getContentPane().add(buttonMemoryRecall);
+
+        buttonMemoryAdd.setBorder(null);
+        buttonMemoryAdd.setForeground(Color.gray);
+        buttonMemoryAdd.setBackground(null);
+        buttonMemoryAdd.setFont(new Font("Arial", Font.BOLD, 10));
+        buttonMemoryAdd.setFocusable(false);
+        buttonMemoryAdd.setBounds(120, 105, 40, 40);
+        frame.getContentPane().add(buttonMemoryAdd);
+
+        buttonMemorySubtract.setBorder(null);
+        buttonMemorySubtract.setForeground(Color.gray);
+        buttonMemorySubtract.setBackground(Color.black);
+        buttonMemorySubtract.setFont(new Font("Arial", Font.BOLD, 10));
+        buttonMemorySubtract.setFocusable(false);
+        buttonMemorySubtract.setBounds(180, 105, 40, 40);
+        frame.getContentPane().add(buttonMemorySubtract);
+
+        buttonMemoryStore.setBorder(null);
+		buttonMemoryStore.setForeground(Color.gray);
+		buttonMemoryStore.setBackground(Color.black);
+		buttonMemoryStore.setFont(new Font("Arial", Font.BOLD, 10));
+		buttonMemoryStore.setFocusable(false);
+		buttonMemoryStore.setBounds(230, 105, 40, 40);
+        frame.getContentPane().add(buttonMemoryStore);
+
+
+    }
+
+    public void prepareGui(){
+        frame.setSize(305,500);
+        frame.getContentPane().setLayout(null);
+        frame.getContentPane().setBackground(Color.black);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public void addActionEvent(){
+
+        buttonClear.addActionListener(this);
+        buttonDelete.addActionListener(this);
+        buttonReciprocal.addActionListener(this);
+        buttonSquare.addActionListener(this);
+        buttonPlus.addActionListener(this);
+        buttonMinus.addActionListener(this);
+        buttonMul.addActionListener(this);
+        buttonSqrt.addActionListener(this);
+        buttonDiv.addActionListener(this);
+        buttonEqual.addActionListener(this);
+        buttonZero.addActionListener(this);
+        buttonDot.addActionListener(this);
+        buttonThree.addActionListener(this);
+        buttonTwo.addActionListener(this);
+        buttonOne.addActionListener(this);
+        buttonSix.addActionListener(this);
+        buttonFive.addActionListener(this);
+        buttonFour.addActionListener(this);
+        buttonNine.addActionListener(this);
+        buttonEight.addActionListener(this);
+        buttonSeven.addActionListener(this);
+        buttonNegation.addActionListener(this);
+        buttonPercent.addActionListener(this);
+        buttonClearEntity.addActionListener(this);
+        buttonMemoryAdd.addActionListener(this);
+        textMemory.addActionListener(this);
+        buttonMemorySubtract.addActionListener(this);
+        buttonMemoryRecall.addActionListener(this);
+        buttonMemoryClear.addActionListener(this);
+    }
+
+    public static void main(String[] args) {
+        CalculatorApplication calculator = new CalculatorApplication();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e){
+
+        Object source = e.getSource();
+
+        if(source == buttonClear){								//CLEAR
+            label.setText("");
+            textField.setText("");
+        }else if(source == buttonDelete){						//DELETE
+         int length = textField.getText().length();
+         int number = length-1;
+         if(length > 0){
+
+             StringBuilder back = new StringBuilder(textField.getText());
+             back.deleteCharAt(number);
+             textField.setText(back.toString());
+         }
+         if(textField.getText().endsWith("")){
+             label.setText("");
+         }
+        }else if(source == buttonZero){							//ZERO
+            if(textField.getText().equals("0")){
+                return;
+            }else{
+                textField.setText(textField.getText() + "0");
+            }
+
+        }else if(source == buttonReciprocal){					//RECIPROCAL
+			num1 = Double.parseDouble(textField.getText());
+			double reciprocal = 1/num1;
+            textField.setText(Double.toString(reciprocal));
+		}else if(source == buttonOne){							//ONE
+            textField.setText(textField.getText() + "1");
+        }else if(source == buttonTwo){							//TWO
+            textField.setText(textField.getText() + "2");
+        }else if(source == buttonThree){						//THREE
+            textField.setText(textField.getText() + "3");
+        }else if(source == buttonFour){							//FOUR
+            textField.setText(textField.getText() + "4");
+        }else if(source == buttonFive){							//FIVE
+            textField.setText(textField.getText() + "5");
+        }else if(source == buttonSix){							//SIX
+            textField.setText(textField.getText() + "6");
+        }else if(source == buttonSeven){						//SEVEN
+            textField.setText(textField.getText() + "7");
+        }else if(source == buttonEight){						//EIGHT
+            textField.setText(textField.getText() + "8");
+        }else if(source == buttonNine){							//NINE
+            textField.setText(textField.getText() + "9");
+        }else if (source == buttonDot){							//DOT
+            if (textField.getText().contains(".")){
+                return;
+
+            }else {
+                 textField.setText(textField.getText() + ".");
+            }
+        }else if (source == buttonPlus){						//PLUS
+			 String str = textField.getText();
+			    if (!str.isEmpty()) {
+			        num1 = Double.parseDouble(str);
+			        calculation = 1;
+			        textField.setText("");
+			        label.setText(str + "+");
+    }
+        }else if (source == buttonMinus){						//MINUS
+			String str = textField.getText();
+			    if (!str.isEmpty()) {
+			        num1 = Double.parseDouble(str);
+			        calculation = 2;
+			        textField.setText("");
+			        label.setText(str + "-");
+    }
+        }else if (source == buttonMul){							//MUL
+			String str = textField.getText();
+			    if (!str.isEmpty()) {
+			        num1 = Double.parseDouble(str);
+			        calculation = 3;
+			        textField.setText("");
+			        label.setText(str + "×");
+    }
+        }else if (source == buttonDiv){							//DIV
+			String str = textField.getText();
+			    if (!str.isEmpty()) {
+			        num1 = Double.parseDouble(str);
+			        calculation = 4;
+			        textField.setText("");
+			        label.setText(str + "÷");
+    }
+        }else if (source == buttonSquare){						//SQUARE
+			 String currentText = textField.getText();
+			    if (!currentText.isEmpty()) {
+			        double currentValue = Double.parseDouble(currentText);
+			        double squareValue = currentValue * currentValue;
+			        textField.setText(Double.toString(squareValue));
+			        label.setText(currentText + "²");
+    }
+        }else if (source == buttonSqrt){						//SQRT
+			 String currentText = textField.getText();
+			    if (!currentText.isEmpty()) {
+			        double currentValue = Double.parseDouble(currentText);
+			        if (currentValue >= 0) {
+			            double sqrtValue = Math.sqrt(currentValue);
+			            textField.setText(Double.toString(sqrtValue));
+			            label.setText("\u221A" + currentText);
+			        } else {
+			            textField.setText("Error");
+			            label.setText("Invalid input");
+			        }
+    }
+        }else if(source == buttonEqual){						//EQUAL
+        String str = textField.getText();
+		    if (!str.isEmpty()) {
+		        num2 = Double.parseDouble(str);
+
+		        switch (calculation) {
+		            case 1:
+		                result = num1 + num2;
+		                break;
+		            case 2:
+		                result = num1 - num2;
+		                break;
+		            case 3:
+		                result = num1 * num2;
+		                break;
+		            case 4:
+		                if (num2 != 0) {
+		                    result = num1 / num2;
+		                } else {
+		                    textField.setText("Cannot divide by zero");
+		                    label.setText("Error");
+		                    return;
+		                }
+		                break;
+		        }
+
+		        textField.setText(Double.toString(result));
+		        label.setText("");
+		        num1 = result;
+    }
+        }else if (source == buttonNegation){					//NEGATION
+        String currentText = textField.getText();
+		    if (!currentText.isEmpty() && !currentText.equals("0")) {
+		        double currentValue = Double.parseDouble(currentText);
+		        double negatedValue = -currentValue;
+		        textField.setText(Double.toString(negatedValue));
+    }
+        }else if (source == buttonPercent) {					//PERCENT
+         String currentText = textField.getText();
+		    if (!currentText.isEmpty()) {
+		        double currentValue = Double.parseDouble(currentText);
+		        double percentageValue = currentValue / 100;
+		        textField.setText(Double.toString(percentageValue));
+		        label.setText(currentText + "%");
+    }
+        }else if (source == buttonClearEntity) {				//CLEAR ENTITY
+            textField.setText("");
+    		label.setText("");
+        }else if (source == buttonMemoryAdd) {
+            String currentText = textField.getText();
+            if (!currentText.isEmpty()) {
+                double currentValue = Double.parseDouble(currentText);
+                String memoryText = textMemory.getText();
+                double memoryValue = memoryText.isEmpty() ? 0 : Double.parseDouble(memoryText);
+                double newMemoryValue = memoryValue + currentValue;
+                textMemory.setText(Double.toString(newMemoryValue));
+            }
+        }
+        else if (source == buttonMemorySubtract) {
+            String currentText = textField.getText();
+            if (!currentText.isEmpty()) {
+                double currentValue = Double.parseDouble(currentText);
+
+                String memoryText = textMemory.getText();
+                double memoryValue = memoryText.isEmpty() ? 0 : Double.parseDouble(memoryText);
+
+                double newMemoryValue = memoryValue - currentValue;
+
+                textMemory.setText(Double.toString(newMemoryValue));
+            }
+        }else if (source == buttonMemoryRecall) {			//MEMORY RECALL
+            String memoryText = textMemory.getText();
+            if (!memoryText.isEmpty()) {
+                textField.setText(memoryText);
+            }
+        }else if (source == buttonMemoryClear) {			//MEMORY CLEAR
+            textMemory.setText("");
+
+        }else if (source == buttonMemoryStore) {			//MEMORY STORE
+        String currentText = textField.getText();
+        if (!currentText.isEmpty()) {
+            double currentValue = Double.parseDouble(currentText);
+            memory = currentValue;
+            textField.setText("Memory: " + memory);
+        }
+		}
+    }
+
+}

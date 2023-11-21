@@ -1,0 +1,29 @@
+.container{
+    border: 20px solid #9b7676;
+    padding: 100px;
+    border-radius: 100px;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    
+}
+
+h1{
+    margin: 0;
+}
+
+.tasks{
+    padding: 10px;
+}
+
+.task-items{
+    border: 1px solid #d0d0d0;
+    margin: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.task-items:hover{
+    background-color: #dedede;
+}

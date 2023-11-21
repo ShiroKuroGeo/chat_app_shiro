@@ -1,0 +1,5 @@
+//commands
+
+C:\Windows\system32>cd C:\Microsoft 365
+
+C:\Microsoft 365>setup /configure configuration.xml

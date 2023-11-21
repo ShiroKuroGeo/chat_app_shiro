@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATAKAAN LANG</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        function createApp(options){
+        }
+
+        let app = createApp({
+            data(){
+            return {
+            	msg: "Hello World"
+                }
+               },
+               template: '<p id="msg"></p>'
+        });
+        app.mount("#container");
+    </script>
+</body>
+</html>

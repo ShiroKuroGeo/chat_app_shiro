@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+void main()
+{
+int x,y,z;
+printf("ENTER NUM1");
+scanf("%d",&x);
+printf("ENTER NUM2");
+scanf("%d",&y);
+z = x-y;
+print("THE DIFFERENCE IS %d",z);
+
+
+
+}
